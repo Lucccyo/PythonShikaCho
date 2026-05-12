@@ -24,7 +24,7 @@ class Card:
   month : Month
   type : Type
 
-  def __init__ ( self, month: Month, type: Type) -> None:
+  def __init__ (self, month: Month, type: Type, num: int) -> None:
     """
     Initialize a card.
     Args:
@@ -33,28 +33,28 @@ class Card:
     """
     self.month = month
     self.type = type
+    self.num = num
 
   def init_cards():
     cards = []
     distribution = {
-      Month.JAN: [Type.BRIGHT, Type.RIBBON, Type.PLAIN, Type.PLAIN],
-      Month.FEB: [Type.ANIMAL, Type.RIBBON, Type.PLAIN, Type.PLAIN],
-      Month.MAR: [Type.BRIGHT, Type.RIBBON, Type.PLAIN, Type.PLAIN],
-      Month.APR: [Type.ANIMAL, Type.RIBBON, Type.PLAIN, Type.PLAIN],
-      Month.MAY: [Type.ANIMAL, Type.RIBBON, Type.PLAIN, Type.PLAIN],
-      Month.JUN: [Type.ANIMAL, Type.RIBBON, Type.PLAIN, Type.PLAIN],
-      Month.JUL: [Type.ANIMAL, Type.RIBBON, Type.PLAIN, Type.PLAIN],
-      Month.AUG: [Type.BRIGHT, Type.ANIMAL, Type.PLAIN, Type.PLAIN],
-      Month.SEP: [Type.ANIMAL, Type.RIBBON, Type.PLAIN, Type.PLAIN],
-      Month.OCT: [Type.ANIMAL, Type.RIBBON, Type.PLAIN, Type.PLAIN],
-      Month.NOV: [Type.BRIGHT, Type.ANIMAL, Type.RIBBON, Type.PLAIN],
-      Month.DEC: [Type.BRIGHT, Type.PLAIN, Type.PLAIN, Type.PLAIN],
-    }
+        Month.JAN: [Type.PLAIN, Type.PLAIN,  Type.RIBBON, Type.BRIGHT],
+        Month.FEB: [Type.PLAIN, Type.PLAIN,  Type.RIBBON, Type.ANIMAL],
+        Month.MAR: [Type.PLAIN, Type.PLAIN,  Type.RIBBON, Type.BRIGHT],
+        Month.APR: [Type.PLAIN, Type.PLAIN,  Type.RIBBON, Type.ANIMAL],
+        Month.MAY: [Type.PLAIN, Type.PLAIN,  Type.RIBBON, Type.ANIMAL],
+        Month.JUN: [Type.PLAIN, Type.PLAIN,  Type.RIBBON, Type.ANIMAL],
+        Month.JUL: [Type.PLAIN, Type.PLAIN,  Type.RIBBON, Type.ANIMAL],
+        Month.AUG: [Type.PLAIN, Type.PLAIN,  Type.ANIMAL, Type.BRIGHT],
+        Month.SEP: [Type.PLAIN, Type.PLAIN,  Type.RIBBON, Type.ANIMAL],
+        Month.OCT: [Type.PLAIN, Type.PLAIN,  Type.RIBBON, Type.ANIMAL],
+        Month.NOV: [Type.PLAIN, Type.RIBBON, Type.ANIMAL, Type.BRIGHT],
+        Month.DEC: [Type.PLAIN, Type.PLAIN,  Type.PLAIN,  Type.BRIGHT]}
     for month, types in distribution.items():
-      for t in types:
-        cards.append(Card(month, t))
-
+      for i, t in enumerate(types):
+        cards.append(Card(month, t, i))
     return cards
 
   def __repr__ (self) -> str:
-    return f"Card({self.month}-{self.type})"
+    return f"Card({self.month}-{self.type}-{self.num})"
+
